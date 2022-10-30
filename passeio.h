@@ -85,13 +85,21 @@ void printMatrix(int matriz[8][8], int num_iteracoes, int num_retrocessos) {
         for(int i = 0; i < linhas; ++i) {
             for(int j = 0; j < colunas; ++j) {
                 if(matriz[i][j] < 10){
-                    fprintf(arq, "0%d ", matriz[i][j]);
+                    if(j == 7){
+                        fprintf(arq, "0%d", matriz[i][j]);
+                        fprintf(arq, "\n");
+                    } else {
+                        fprintf(arq, "0%d ", matriz[i][j]);
+                    }
                 } else {
-                    fprintf(arq, "%d ", matriz[i][j]);
+                    if(j == 7) {
+                        fprintf(arq, "%d", matriz[i][j]);
+                        fprintf(arq, "\n");
+                    } else {
+                        fprintf(arq, "%d ", matriz[i][j]);
+                    }
                 }
-                if(j == 7){
-                    fprintf(arq, "\n");
-                }
+                
             }
         }
             
@@ -135,10 +143,10 @@ int passeio(int x, int y, int moves, long int*iterations, long int* regressions,
 
     //definir proximos movimentos válidos
     positionObject neighbour_array[8];
-    int close_neighbours_amount = getValidNeighbours(neighbour_array, x, y, board);
-    warnsdorff_heuristic(neighbour_array, close_neighbours_amount);
+    int amount = getValidNeighbours(neighbour_array, x, y, board);
+    warnsdorff_heuristic(neighbour_array, amount);
 
-    for(int i = 0; i < close_neighbours_amount; i++) {
+    for(int i = 0; i < amount; i++) {
         if(passeio(neighbour_array[i].x, neighbour_array[i].y, moves + 1, iterations, regressions, board)) return 1;
         *(regressions) = *(regressions) + 1;
     }

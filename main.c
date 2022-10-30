@@ -27,4 +27,4 @@ int main () {
         printf("\nThe algorithm could not find a solution for these coordinates :(\n");
         return 0;
     }
-}
+};
