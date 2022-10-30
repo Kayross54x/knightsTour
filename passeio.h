@@ -109,7 +109,7 @@ void printMatrix(int matriz[8][8], int num_iteracoes, int num_retrocessos) {
 // Warsndorff's Rule - Heuristic that allows us to reduce the number of iterations by ordering the moves
 // based on the longest Euclidean distance from your points to the center position of the board, using the Quick Sort technique.
 void warnsdorff_heuristic(positionObject neighbours[], int neighbour_amount) {
-    qsort(neighbours, neighbour_amount, sizeof(positionObject), compare_coordinate);
+    qsort(neighbours, neighbour_amount, sizeof(positionObject), simplifyCoordenates);
 }
 
 // Função que retorna a diferença da distância distancia euclidiana de duas coordenadas até o centro do tabuleiro
